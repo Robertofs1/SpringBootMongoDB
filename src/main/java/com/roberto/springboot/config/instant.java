@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.roberto.springboot.domain.Post;
 import com.roberto.springboot.domain.User;
+import com.roberto.springboot.dto.AuthorDTO;
 import com.roberto.springboot.repository.PostRepository;
 import com.roberto.springboot.repository.UserRepository;
 
@@ -35,11 +36,13 @@ public class instant implements CommandLineRunner {
 		User roberto = new User(null, "roberto ", "roberto@gmail.com");
 		User ane = new User(null, "Ane", "ane@gmail.com");
 		
-		Post post1 = new Post(null, sdf.parse("21/08/2022"), "Partiu bahia", "VOU VIAJAR", roberto );
-		Post post2 = new Post(null, sdf.parse("22/09/2022"), "Partiu bahia", "VOU VIAJAR", ane);
-		
-		
 		userRepository.saveAll(Arrays.asList(roberto, ane));
+
+		
+		Post post1 = new Post(null, sdf.parse("21/08/2022"), "Partiu bahia", "VOU VIAJAR", new AuthorDTO(roberto) );
+		Post post2 = new Post(null, sdf.parse("22/09/2022"), "Partiu bahia", "VOU VIAJAR", new AuthorDTO(ane));
+		
+		
 		postRepository.saveAll(Arrays.asList(post1, post2));
 
 		
