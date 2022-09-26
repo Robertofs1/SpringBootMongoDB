@@ -44,6 +44,9 @@ public class instant implements CommandLineRunner {
 		
 		
 		postRepository.saveAll(Arrays.asList(post1, post2));
+		
+		ane.getPosts().addAll(Arrays.asList(post1 , post2));
+		userRepository.save(ane);
 
 		
 	}
