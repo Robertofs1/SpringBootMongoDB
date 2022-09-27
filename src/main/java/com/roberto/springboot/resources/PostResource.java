@@ -11,19 +11,16 @@ import com.roberto.springboot.domain.Post;
 import com.roberto.springboot.services.PostService;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value="/posts")
 public class PostResource {
-	
+
 	@Autowired
 	private PostService service;
-	
-	
-	
-	@RequestMapping(value="/{id}", method= RequestMethod.GET)
-	public ResponseEntity<Post> findById(@PathVariable String id) {
+
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+ 	public ResponseEntity<Post> findById(@PathVariable String id) {
 		Post obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
-		
 	}
 	
 	
